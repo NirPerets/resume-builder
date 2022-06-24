@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+    list-style: none;
+}
+
+/* ====================== VARIABLES & GOLBALS ========================= */
+
+$background: #0b0c1a;
+$main-color: #f63f67;
+$second-color: #52f2d6;
+$text-color: #ffffff;
+$menu-background: #020413;
+
+$border: 1px solid #383838;
+$headerHeight: 80px;
+$topHeaderHeight: 40px;
+$sidebarWidth: 50px;
+
+$mainFont: 'Raleway', sans-serif;
+
+$globalMargin: 15px;
+
+body {
+    background: $background;
+    color: $text-color;
+    font-family: $mainFont;
+}
+
+.mt {margin-top: $globalMargin;}
+.mr {margin-right: $globalMargin;}
+.ml {margin-left: $globalMargin;}
+.mb {margin-bottom: $globalMargin;}
+
+span {
+    font-family: $mainFont;
+}
+
+button,input,p,div {
+    font-family: $mainFont;
+}
+
+button {
+    background: none;
+    transition: 0.3s opacity ease;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $text-color;
+}
+
+svg {
+    fill: $text-color;
+    width: 24px;
+    height: 24px;
+}
+
+/* ====================== HEADER & LAYOUT ========================= */
+
+.header__wrapper {
+    background: $menu-background;
+    padding: 20px;
+    border-bottom: $border;
+    height: $headerHeight;
+    z-index: 2;
+    position: relative;
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            font-size: 22px;
+        }
+    }
+}
+
+.content_wrapper {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+}
+
+.main_content {
+    margin-left: 66px;
+    padding: 15px 25px;
+}
+
+/* ====================== BUILDER BARS ========================= */
+
+.sidebar__wrapper {
+    background-color: $menu-background;
+    height: calc(100vh);
+    //width: $sidebarWidth;
+    position: fixed;
+    padding-top: calc($headerHeight + $topHeaderHeight);
+    left: 0;
+    top: 0;
+    border-right: $border;
+    transition: 0.3s all ease;
+    z-index: 1;
+
+    .sidebar {
+        transition: 0.3s all ease;
+    }
+
+    li {
+        .sidebar__button {
+            transition: 0.3s all ease;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            font-size: 16px;
+
+            svg {
+                fill: $second-color;
+            }
+
+            span {
+                color: $text-color;
+                margin-left: 15px;
+                display: none;
+            }
+
+            &.active {
+                background: rgba(82, 242, 214, 0.3);
+                font-weight: 700;
+            }
+        }
+    }
+
+    .addSection {
+        border: $border;
+        border-radius: 5px;
+        margin: 15px;
+        padding: 5px;
+        background: $main-color;
+        display: flex;
+        align-items: center;
+        color: $text-color;
+        
+        svg {
+        }
+
+        span {
+            display: none;
+            margin-left: 10px;
+        }
+    }
+
+    &.expanded {
+        li {
+            .sidebar__button {
+                span {
+                    display: inline;
+                }
+            }
+        }
+
+        .addSection {
+            width: 85%;
+            margin: 15px auto;
+            span {display: block;}
+        }
+    }
+
+    .minimizeSidebar {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transition: 0.3s transform ease;
+        cursor: pointer;
+
+        &.expanded {
+            right: auto;
+            left: 20px;
+            transform: rotateY(180deg);
+        }
+    }
+}
+
+.topHeader__wrapper {
+    background-color: $menu-background;
+    width: 100%;
+    height: $topHeaderHeight;
+    border-bottom: $border;
+}
+
+/* ====================== FORM ========================= */
+
+.section__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.section__subtitle {
+    font-size: 1.75rem;
+    font-weight: 300;
+    margin: 5px 0 10px;
+}
+
+.section__button {
+    color: $second-color;
+    margin-bottom: 40px;
+}
+
+.section__submit {
+    background: $main-color;
+    width: 30%;
+    padding: 15px;
+    color: $text-color;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: auto;
+    display: block;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.midform__title {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 5px 0 15px;
+}
+
+.form__columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form__inputWrapper {
+    position: relative;
+    margin-bottom: 20px;
+
+    &.col-lg-2 {
+        width: 49%;
+    }
+
+    .input__label {
+        position: absolute;
+        z-index: 1;
+        top: 8px;
+        left: 0.6em;
+        padding: 5px;
+        background: $background;
+        font-size: 14px;
+        color:rgba(255, 255, 255, 0.5);
+        transition: 0.3s transform ease, 0.3s color ease;
+
+        &.in_block {
+            background: $menu-background;
+        }
+    }
+
+    .form__input {
+        position: relative;
+        z-index: 2;
+        padding: 1em .75em;
+        background: transparent;
+        border: $border;
+        border-radius: 8px;
+        transition: 0.4s all ease;
+        outline: none;
+        width: 100%;
+        color: #ffffff;
+
+        &::placeholder {
+            color: transparent;
+            transition: 0.6s color ease;
+        }
+
+        &:hover {
+            border: 1px solid $second-color;
+        }
+
+        &:focus {
+            border: 1px solid $main-color;
+
+            &::placeholder {color: rgba(255, 255, 255, 0.5);}
+            &+.input__label {
+                transform: translate3d(0,-22px,0) scale(.75);
+                color: $main-color;
+                z-index: 3;
+            }
+        }
+
+        &:not(:placeholder-shown) {
+            border: 1px solid $second-color;
+            &+.input__label {
+                transform: translate3d(0,-22px,0) scale(.75);
+                color: $second-color;
+                z-index: 3;
+            }
+        }
+    }
+
+    .input__note {
+        font-size: 14px;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+}
+
+.tip__wrapper {
+    background: rgba(82, 242, 214, 0.3);
+    padding: 15px;
+    border: 1px solid $second-color;
+    border-radius: 8px;
+    margin-bottom: 25px;
+
+    .tip__title {
+        font-size: 1.4rem;
+        color: $second-color;
+        font-weight: 400;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+
+        svg {
+            fill: $second-color;
+            margin-right: 10px;
+        }
+    }
+
+    .tip {
+
+    }
+}
+
+.block__wrapper {
+    background: $menu-background;
+    padding: 16px 20px;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+    margin-top: 20px;
+
+    .block {
+        position: relative;
+        .block__title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .block__subtitle {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .block__text {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .block__note {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        .block__buttons {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            .block__button {
+                margin-left: 10px;
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
+
+.addBlock, .addInput {
+    display: block;
+    width: 50%;
+    text-align: center;
+    margin: 20px auto;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+
+    svg {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.addInput {
+    margin-bottom: 0;
+}
+
+.addSocialLinks {
+    display: flex;
+    color: #ffffff;
+    border-radius: 5px;
+    background: $menu-background;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    padding: 16px;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 auto 15px;
+
+    .social_icons {
+        margin-right: 6px;
+        svg {
+            fill: $main-color;
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+        }
+    }
+
+    .chevron_icon svg {
+        width: 18px;
+        height: 18px;
+        margin-left: 12px;
+    }
+}
+
+.social__wrapper {
+    opacity: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: 0.3s all ease;
+
+    &.open {
+        opacity: 1;
+        max-height: 1500px;
+    }
+}
+
+.empty__note {
+    font-style: italic;
+    font-size: 1rem;
+    margin: 5px 0;
+}
