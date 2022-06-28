@@ -47,7 +47,7 @@ export default function Contact() {
     }, [])
 
     return(
-        <>
+        <div className="section">
             <div className="section__title">Contact Info</div>
             <div className="section__subtitle">What's the best way for employers to reach you?</div>
             <button className="section__button" onClick={ clearInputs }>Clear out all contact info</button>
@@ -128,6 +128,6 @@ export default function Contact() {
                 </div>
             </div>
             <Link to="/resume-builder/education" className="section__submit">Continue</Link>
-        </>
+        </div>
     )
 }

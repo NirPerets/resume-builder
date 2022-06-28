@@ -7,7 +7,7 @@ import PlusIcon from '../../Icons/Plus'
 export default function Education() {
     const [degrees, setDegrees] = useState([])
 
-    const addDegree = async () => {
+    const addDegree = () => {
         var updatedDegrees = [...degrees, {
             id: degrees.length,
             schoolName: '',
@@ -23,42 +23,32 @@ export default function Education() {
     }
 
     useEffect(() => {
-        setDegrees(JSON.parse(localStorage.getItem('education')))
+        var educationInfo = localStorage.getItem('education')
+        if(educationInfo)
+            setDegrees(JSON.parse(educationInfo))
     }, [])
-
-    const handleInput = (e, i) => {
-        /*const { name, value } = e.target
-
-        let updatedDegress = degress.map((degree, index) => {
-            if(i == index) {
-                return {...degree, [name] : value}
-            }
-            return degree
-        })
-        setDegress(updatedDegress)*/
-    }
 
     if(degrees.length == 0) {
         return(
-            <>
+            <div className="section">
                 <div className="section__title">Education</div>
-                <p className="empty__note">No roles added yet.</p>
+                <p className="empty__note">No degrees added yet.</p>
                 <button className='addBlock' onClick={ addDegree }>{ PlusIcon } Add new degree</button>
                 <Link to="/resume-builder/experience" className="section__submit">Continue</Link>
-            </> 
+            </div> 
         )
     } else {
         return(
-            <>
+            <div className="section">
                 <div className="section__title">Education</div>
                 {
                     degrees.map((degree, index) => {
-                        return(<Degree degree={ degree } setDegreeInfo={ handleInput } index={ index } />)
+                        return(<Degree degrees={ degrees } setDegrees={ setDegrees } key={ index } index={ index } />)
                     })
                 }
                 <button className='addBlock' onClick={ addDegree }>{ PlusIcon } Add new degree</button>
                 <Link to="/resume-builder/experience" className="section__submit">Continue</Link>
-            </>
+            </div>
         )
     }
 }
