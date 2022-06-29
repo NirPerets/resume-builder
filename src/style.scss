@@ -684,3 +684,106 @@ svg {
     }
   }
   
+
+.pdf__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .pdfToExport {
+        max-width: 720px;
+        width: 100%;
+        max-height: 1280px;
+        background: #ffffff;
+        display: flex;
+        color: #000000;
+    }
+
+    .left__column {
+        width: 35%;
+    }
+
+    .right__column {
+        width: 65%;
+    }
+
+    .pdf__header {
+        background: navy;
+        color: #ffffff;
+        padding: 20px;
+
+        .pdf__social {
+            margin-top: 10px;
+
+            .social__block {
+                display: flex;
+                align-items: center;
+                margin: 10px 0;
+
+                svg {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+
+    .pdf__title {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .pdf__subtitle {
+        color: #000000;
+        font-style: italic;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .pdf__section {
+        padding: 25px;
+    }
+
+    .pdf__sectionTitle {
+        font-size: 20px;
+        color: #000000;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    .pdf__sectionSubtitle {
+        font-size: 16px;
+        font-style: italic;
+    }
+
+    .pdf__sectionList {
+        padding: 5px 10px;
+        li {
+            list-style: disc;
+        }
+    }
+
+    .degree__title {
+        font-size: 16px;
+    }
+
+    .degree__name {
+        font-weight: bold;
+        color: navy;
+        font-size: 16px;
+    }
+
+    .text__withIcon {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        margin: 6px 0;
+        svg {
+            width: 16px;
+            height: 16px;
+            fill: #ccc;
+            margin-right: 10px;
+        }
+    }
+}
