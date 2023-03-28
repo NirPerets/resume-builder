@@ -16,12 +16,26 @@ export default function PDF() {
                 <div className='pdfToExport'>
                     <div className='left__column'>
                         <PdfHeader info={ resumeInfo.contact } />
-                        <PdfEducation info={ resumeInfo.education } />
-                        <PdfSkills info={ resumeInfo.skills } />
+                        {
+                            resumeInfo.education != null ?
+                            (<PdfEducation info={ resumeInfo.education } />) : <></>
+                        }
+                        
+                        {
+                            resumeInfo.skills != null ?
+                            <PdfSkills info={ resumeInfo.skills } /> : <></>
+                        }
                     </div>
                     <div className='right__column'>
-                        <PdfCareer info={ resumeInfo.career } />
-                        <PdfExperience info={ resumeInfo.experience } />
+                        {
+                            resumeInfo.career != null ?
+                            <PdfCareer info={ resumeInfo.career } /> : <></>
+                        }
+
+                        {
+                            resumeInfo.experience != null ?
+                            <PdfExperience info={ resumeInfo.experience } /> : <></>
+                        }
                     </div>
                 </div>
             </div>
